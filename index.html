@@ -1,38 +1,48 @@
 <html>
 
 <head>
-    <script src="index.js"></script>
 </head>
 
 <body>
-    <input/>
-    <button>enter</button>
-    <ul></ul>
+    <p>Enter a word or sentence, get one-letter variations of it.</p>
+    <input />
+    <button>Check it!</button>
+    <ul>
+        <p>Please wait while the dictionary loads...</p>
+    </ul>
 
+    <script src="index.js"></script>
     <script>
+        var searchParams = new URLSearchParams(window.location.search);
+        const input = document.querySelector("input");
+
+        var qTitle = searchParams.get('title');
+        if (qTitle) input.value = qTitle;
+
         const button = document.querySelector("button");
         const ul = document.querySelector("ul");
 
-        const onButtonClick = (e) => {
-            const input = document.querySelector("input");
+        const clearList = () => { while (ul.firstElementChild != undefined) ul.firstElementChild.remove(); }
 
-            while (ul.firstElementChild != undefined) ul.firstElementChild.remove();
+        const onButtonClick = (e) => {
+
+            clearList();
 
             const tileVariants = getTitleVariations(input.value);
 
-            tileVariants.forEach((t)=> {
+            tileVariants.forEach((t) => {
                 const li = document.createElement("li");
                 li.innerText = t;
                 ul.appendChild(li);
             });
 
-            
 
-        
+
+
         }
 
         button.addEventListener('click', onButtonClick);
-    
+        clearList();
     </script>
 </body>
 
