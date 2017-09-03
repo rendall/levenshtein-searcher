@@ -1,0 +1,11 @@
+{
+  "name": "levenshtein-searcher",
+  "version": "0.0.1",
+  "description": "Input a word, an integer representing the Levenshtein distance (and a dictionary). Get back an array of all words within that distance.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/test.js"
+  },
+  "author": "Rendall Koski",
+  "license": "MIT"
+}

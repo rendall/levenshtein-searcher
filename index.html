@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <input/>
+    <button>enter</button>
+    <ul></ul>
+
+    <script>
+        const button = document.querySelector("button");
+        const ul = document.querySelector("ul");
+
+        const onButtonClick = (e) => {
+            const input = document.querySelector("input");
+
+            while (ul.firstElementChild != undefined) ul.firstElementChild.remove();
+
+            const tileVariants = getTitleVariations(input.value);
+
+            tileVariants.forEach((t)=> {
+                const li = document.createElement("li");
+                li.innerText = t;
+                ul.appendChild(li);
+            });
+
+            
+
+        
+        }
+
+        button.addEventListener('click', onButtonClick);
+    
+    </script>
+</body>
+
+
+</html>
