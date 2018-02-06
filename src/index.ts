@@ -1,5 +1,6 @@
 /// <reference path="dictionary.ts"/>
 
+// returns the union of Sets a and b. That is to say, all elements of both A and B.
 const setUnion = (a: Set<string>, b: Set<string>) => {
     let union = new Set(a);
     for (var elem of Array.from(b)) {
@@ -8,9 +9,10 @@ const setUnion = (a: Set<string>, b: Set<string>) => {
     return union;
 }
 
+// input a string and an integer, returns the string value with '.' replacing the character at the integer.
 const getSearchPattern = (word: string, x: number) => word.substring(0, x) + '.' + word.substring(x + 1);
 
-
+// getCloseWordsUsing ... dictionary. Input an array of words (the "dictionary" (not the data structure)), and a string, return a set of all single-letter variations of the second argument that exist in the first.
 const getCloseWordsUsing = (dict: string[], word: string): Set<string> => {
 
     if (word.toLowerCase() != word) return getCloseWordsUsing(dict, word.toLowerCase());
@@ -38,8 +40,11 @@ const getCloseWordsUsing = (dict: string[], word: string): Set<string> => {
     return new Set(closeWords());
 }
 
+// Input a word, returns a Set of English words that vary from the input value by one letter.
+// Does use a global variable of an open-source list of English words linked via dictionary.ts / dictonary.js
 const getCloseWords = (word: string) => getCloseWordsUsing(dictionary, word);
 
+// Does what it says on the tin. Input a string of words and spaces, returns a Set of sentences that vary from the input value by one letter.
 const getSentenceVariations = (sentence: string, i: number = 0, varis: Set<string> = new Set()): Set<string> => {
     if (sentence.indexOf('  ') >= 0) return getSentenceVariations(sentence.trim().replace('  ', ' '), i, varis);
     const words = sentence.split(' ');
@@ -62,6 +67,8 @@ const getSentenceVariations = (sentence: string, i: number = 0, varis: Set<strin
     return getSentenceVariations(sentence, i + 1, setUnion(varis, assembleSentences(words, closeWords, i)));
 }
 
+// Input any string. Returns the value stripped of punctuation; double, initial and trailing spaces; upper-case letters.
+// For normalizing string input.
 const cleanString = (str: string, clean: string = "", i: number = 0): string =>
     str.toLowerCase() != str || str.trim() != str ?
         cleanString(str.toLowerCase().trim(), clean, i) :
@@ -71,4 +78,5 @@ const cleanString = (str: string, clean: string = "", i: number = 0): string =>
                 cleanString(str, clean + str[i], i + 1) :
                 cleanString(str, clean, i + 1);
 
+// Input any sentence (or title). Returns a Set of all English sentences that vary by a single letter.
 const getTitleVariations = (title:string) => getSentenceVariations(cleanString(title));
