@@ -1,4 +1,7 @@
 /// <reference path="dictionary.ts"/>
+// the dictionary.ts / dictionary.js file is simply of the form
+//   const dictionary=["aa","aah","aardvark","aardvarks","aarrgh"...]
+// creating a global variable, *dictionary*, comprised of 264,061 English words.
 
 // returns the union of Sets a and b. That is to say, all elements of both A and B.
 const setUnion = (a: Set<string>, b: Set<string>) => {
