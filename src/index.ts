@@ -1,4 +1,6 @@
 /// <reference path="dictionary.ts"/>
+// This code is in global scope, but feel free to place it in a module. 
+// 
 // the dictionary.ts / dictionary.js file is simply of the form
 //   const dictionary=["aa","aah","aardvark","aardvarks","aarrgh"...]
 // creating a global variable, *dictionary*, comprised of 264,061 English words.
