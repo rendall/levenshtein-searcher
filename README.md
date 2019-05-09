@@ -1,5 +1,9 @@
 # levenshtein-searcher
 
+Input a novel or movie title, get back a whole lot of those 'ruin a novel in one letter' answers.
+
+Do it. [Do it now](https://rendall.github.io/levenshtein-searcher/)
+
 A couple of whimsical utilities here:
 
 `getTitleVariations` : Input a title, get one-letter variations of that title. 
